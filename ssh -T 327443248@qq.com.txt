@@ -1,0 +1,6 @@
+ssh -T 327443248@qq.com
+
+git clone git@gitee.com:shivermin/你的仓库名.git
+
+
+git remote add origin git@gitee.com:shivermin/my-obsidian.git
