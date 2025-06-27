@@ -41,16 +41,30 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "冒险岛配置.md",
+                "file": "修正后操作步骤.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "冒险岛配置"
+              "title": "修正后操作步骤"
             }
           },
           {
             "id": "058763105254f416",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "修正后操作步骤.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "修正后操作步骤"
+            }
+          },
+          {
+            "id": "8f39dd89c6cda067",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -61,6 +75,20 @@
               },
               "icon": "lucide-file",
               "title": "操作"
+            }
+          },
+          {
+            "id": "0b09282734dde3bf",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Logs.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Logs"
             }
           }
         ],
@@ -214,8 +242,10 @@
   },
   "active": "058763105254f416",
   "lastOpenFiles": [
-    "冒险岛配置.md",
     "操作.md",
+    "修正后操作步骤.md",
+    "Logs.md",
+    "华为云镜像加速器.md",
     "test.md",
     "未命名/稳定币市场.md",
     "未命名/dall-e-3.md",
