@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "冒险岛操作/操作.md",
+                "file": "冒险岛操作/登录历程.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "操作"
+              "title": "登录历程"
             }
           }
         ]
@@ -171,8 +171,8 @@
   },
   "active": "e631c4c6a01c203b",
   "lastOpenFiles": [
-    "冒险岛操作/登录历程.md",
     "冒险岛操作/操作.md",
+    "冒险岛操作/登录历程.md",
     "华为云镜像加速器.md",
     "未命名/稳定币市场.md",
     "未命名/未命名 1.canvas",
