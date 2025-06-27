@@ -1,7 +1,0 @@
-{
-	"nodes":[
-		{"id":"d370567f7bde8b22","x":-16,"y":-4,"width":276,"height":164,"type":"text","text":"第一个测试"},
-		{"id":"07a34c292763e87a","x":360,"y":-4,"width":400,"height":400,"type":"file","file":"未命名/gpt-4o.md"}
-	],
-	"edges":[]
-}
