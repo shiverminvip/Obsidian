@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "资源监控.md",
+                "file": "markdown语法/字体大小.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "资源监控"
+              "title": "字体大小"
             }
           }
         ]
@@ -170,8 +170,9 @@
       "obsidian-local-images-plus:Local Images Plus  0.16.3\r\nLocalize attachments (plugin folder)": false
     }
   },
-  "active": "e631c4c6a01c203b",
+  "active": "b73099b262307d4a",
   "lastOpenFiles": [
+    "资源监控.md",
     "客户端操作.md",
     "华为云镜像加速器.md",
     "markdown语法/字体大小.md",
@@ -183,7 +184,6 @@
     "冒险岛操作/数据库操作.md",
     "冒险岛操作/修正后操作步骤.md",
     "冒险岛操作/dbgate.md",
-    "资源监控.md",
     "冒险岛操作/无法连接，修改配置.md",
     "2496c415522d1437db0b818be0983966_MD5.png",
     "2d71e28f05dfe40422c95fb0bda974bd_MD5.png",
