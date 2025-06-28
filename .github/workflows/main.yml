@@ -1,0 +1,67 @@
+    name: Sync Gitee to GitHub
+    
+    on:
+      push:
+        branches:
+          - master # 监听 Gitee 推送到 GitHub 仓库的 master 分支
+          - main   # 如果你的主分支是 main，也监听 main 分支
+      workflow_dispatch: # 允许手动触发工作流
+    
+    jobs:
+      sync:
+        runs-on: ubuntu-latest # 在最新的 Ubuntu 虚拟机上运行
+        steps:
+          - name: Checkout GitHub Repository
+            uses: actions/checkout@v4
+            with:
+              fetch-depth: 0 # 获取所有历史，包括标签和所有分支
+    
+          - name: Add Gitee Remote
+            run: |
+              # 配置 Git，使用 SSH 密钥
+              mkdir -p ~/.ssh
+              echo "${{ secrets.GITEE_PRIVATE_KEY }}" > ~/.ssh/gitee_key
+              chmod 600 ~/.ssh/gitee_key
+              echo "Host gitee.com" >> ~/.ssh/config
+              echo "  IdentityFile ~/.ssh/gitee_key" >> ~/.ssh/config
+              echo "  StrictHostKeyChecking no" >> ~/.ssh/config # 首次连接时跳过主机密钥检查
+    
+              # 添加 Gitee 作为新的远程仓库
+              git remote add gitee git@gitee.com:shivermin/my-obsidian.git
+              # 替换 <你的Gitee用户名> 和 <你的Gitee仓库名>
+    
+          - name: Fetch from Gitee
+            run: |
+              git fetch gitee --tags # 拉取 Gitee 的所有分支和标签
+    
+          - name: Sync Master/Main Branch
+            run: |
+              # 切换到主分支 (假设你主要同步 master 或 main)
+              # 如果你的主分支是 master:
+              git checkout master
+              git pull gitee master --rebase # 从 Gitee 的 master 分支拉取并变基
+              git push origin master --force # 强制推送到 GitHub 的 master (如果 Gitee 是权威源)
+    
+              # 如果你的主分支是 main:
+              git checkout main
+              git pull gitee main --rebase # 从 Gitee 的 main 分支拉取并变基
+              git push origin main --force # 强制推送到 GitHub 的 main (如果 Gitee 是权威源)
+    
+              # 注意：这里假设你的 Gitee 和 GitHub 仓库的主分支名称一致。
+              # 如果不一致，你需要调整 git checkout 和 git pull/push 的分支名。
+              # 比如 Gitee 是 master，GitHub 是 main，则：
+              # git checkout main
+              # git pull gitee master --rebase
+              # git push origin main --force
+    
+          - name: Sync Other Branches (Optional)
+            run: |
+              # 遍历 Gitee 的所有分支并推送到 GitHub
+              for branch in $(git branch -r | grep 'gitee/' | sed 's/gitee\///g' | grep -v 'HEAD'); do
+                git checkout -B $branch gitee/$branch
+                git push origin $branch --force
+              done
+    
+          - name: Sync Tags (Optional)
+            run: |
+              git push origin --tags # 推送所有标签
