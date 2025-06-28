@@ -158,7 +158,7 @@
               echo "  StrictHostKeyChecking no" >> ~/.ssh/config # 首次连接时跳过主机密钥检查
     
               # 添加 Gitee 作为新的远程仓库
-              git remote add gitee git@gitee.com:<你的Gitee用户名>/<你的Gitee仓库名>.git
+              git remote add gitee git@gitee.com:shivermin/my-obsidian.git
               # 替换 <你的Gitee用户名> 和 <你的Gitee仓库名>
     
           - name: Fetch from Gitee
@@ -258,3 +258,113 @@
 **建议：** 初期先使用**手动触发**来测试工作流是否正常。如果一切顺利，并且你对自动化有更高要求，可以考虑添加 `schedule` 触发器，或者研究如何通过 Gitee WebHook 触发 GitHub `repository_dispatch` 事件。
 
 希望这个详细的步骤能帮助你成功设置 Gitee 到 GitHub 的自动同步！
+
+
+#***我的gitee主分支是master，github主分支是main，需要修改代码吗***
+
+---
+
+是的，你的代码需要修改！
+
+你当前的 GitHub Actions 工作流模板假设你的 Gitee 和 GitHub 仓库都使用相同的默认分支名称（`master` 或 `main`）。由于你的情况是 Gitee 用 `master`，而 GitHub 用 `main`，所以我们需要调整工作流中的分支名称，以确保代码能正确地从 Gitee 的 `master` 分支拉取，然后推送到 GitHub 的 `main` 分支。
+
+### 需要修改的部分
+
+你需要特别关注工作流文件中的 `Sync Master/Main Branch` 步骤。
+
+这是修改后的代码，请仔细替换 `<你的Gitee用户名>` 和 `<你的Gitee仓库名>`：
+
+YAML
+
+```
+name: Sync Gitee to GitHub
+
+on:
+  push:
+    branches:
+      - master # 监听 Gitee (你的源仓库) 的 master 分支
+      - main   # 如果你的 GitHub (目标仓库) 有其他推送，也监听
+  workflow_dispatch: # 允许手动触发工作流
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout GitHub Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Add Gitee Remote
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.GITEE_PRIVATE_KEY }}" > ~/.ssh/gitee_key
+          chmod 600 ~/.ssh/gitee_key
+          echo "Host gitee.com" >> ~/.ssh/config
+          echo "  IdentityFile ~/.ssh/gitee_key" >> ~/.ssh/config
+          echo "  StrictHostKeyChecking no" >> ~/.ssh/config
+
+          # 添加 Gitee 作为新的远程仓库
+          git remote add gitee git@gitee.com:shivermin/my-obsidian.git
+          # !!! 务必替换为你的实际 Gitee 仓库 SSH 地址 !!!
+
+      - name: Fetch from Gitee
+        run: |
+          git fetch gitee --tags # 拉取 Gitee 的所有分支和标签
+
+      - name: Sync Gitee Master to GitHub Main
+        run: |
+          # 1. 确保在正确的本地分支上工作（GitHub 的主分支是 main）
+          git checkout main
+
+          # 2. 从 Gitee 的 master 分支拉取代码并与本地 main 分支合并（rebase 方式更整洁）
+          # 这会将 Gitee master 的所有提交应用到 GitHub main 分支的顶部
+          git pull gitee master --rebase
+
+          # 3. 强制推送到 GitHub 的 main 分支
+          # --force 会覆盖 GitHub 上的 main 分支，确保 Gitee master 是权威源
+          git push origin main --force
+
+      - name: Sync Other Branches (Optional)
+        run: |
+          # 遍历 Gitee 的所有分支并推送到 GitHub
+          # 如果你的Gitee有很多非master分支需要同步，可以保留此步骤
+          # 注意：这里会尝试将 Gitee 的所有分支（除了 master）以同名推送到 GitHub
+          for branch in $(git branch -r | grep 'gitee/' | sed 's/gitee\///g' | grep -v 'HEAD' | grep -v 'master'); do
+            git checkout -B $branch gitee/$branch
+            git push origin $branch --force
+          done
+
+      - name: Sync Tags (Optional)
+        run: |
+          git push origin --tags # 推送所有标签
+```
+
+---
+
+### 主要修改说明：
+
+1. **`on:` 监听分支：**
+    
+    - `master`: 主要是为了**监听 Gitee 仓库的推送事件**，如果你未来设置 Gitee Webhook 触发 GitHub Actions 的话，这个配置能派上用场。
+        
+    - `main`: 确保如果你的 GitHub 仓库有任何直接针对 `main` 分支的推送，这个工作流也能被触发（虽然在这种同步场景下不常见）。
+        
+2. **`Sync Gitee Master to GitHub Main` 步骤：**
+    
+    - `git checkout main`: 确保工作流在本地切换到 GitHub 仓库的 **`main`** 分支。
+        
+    - `git pull gitee master --rebase`: 这一行是关键。它明确地从 `gitee` 这个远程（指向你的 Gitee 仓库）的 **`master`** 分支拉取代码。
+        
+    - `git push origin main --force`: 这一行也同样关键。它将当前本地的 `main` 分支（现在已经包含了 Gitee `master` 的内容）**强制推送到** `origin` 这个远程（指向你的 GitHub 仓库）的 **`main`** 分支。
+        
+        - `--force` 在这里很关键，因为它会确保 GitHub 仓库的 `main` 分支与 Gitee 的 `master` 分支保持完全一致，即 Gitee 上的内容是权威的。但使用 `force` 推送总是有风险的，请确保你了解其含义（它会覆盖远程分支的历史）。
+            
+3. **`Sync Other Branches (Optional)` 步骤：**
+    
+    - `grep -v 'master'`: 增加了一个筛选条件，确保它不会重复处理 `master` 分支，因为 `master` 已经单独处理并映射到了 `main`。
+        
+
+---
+
+通过这些修改，你的 GitHub Actions 工作流就能正确地从 Gitee 的 `master` 分支拉取内容，并将其同步到 GitHub 的 `main` 分支了。
