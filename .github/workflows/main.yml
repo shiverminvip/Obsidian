@@ -3,8 +3,8 @@ name: Sync Gitee to GitHub
 on:
   push:
     branches:
-      - master # 监听 Gitee (你的源仓库) 的 master 分支
-      - main   # 如果你的 GitHub (目标仓库) 有其他推送，也监听
+      - master # 监听 Gitee 推送到 GitHub 仓库的 master 分支
+      - main   # 如果你的 GitHub 有其他推送，也监听
   workflow_dispatch: # 允许手动触发工作流
 
 jobs:
@@ -15,11 +15,12 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          # token: ${{ secrets.GITHUB_TOKEN }} # 这一行通常是默认的，可以保留或省略，不会影响SSH推送
 
-      - name: Set Git User Identity # 新增的步骤
+      - name: Set Git User Identity
         run: |
-          git config user.email "actions@github.com" # 你可以替换成自己的邮箱
-          git config user.name "GitHub Actions Bot"   # 你可以替换成自己喜欢的名字
+          git config user.email "actions@github.com"
+          git config user.name "GitHub Actions Bot"
 
       - name: Add Gitee Remote
         run: |
@@ -30,7 +31,8 @@ jobs:
           echo "  IdentityFile ~/.ssh/gitee_key" >> ~/.ssh/config
           echo "  StrictHostKeyChecking no" >> ~/.ssh/config
 
-          git remote add gitee git@gitee.com:shivermin/my-obsidian.git # 确保这里是你的实际 Gitee 仓库地址
+          # 添加 Gitee 作为新的远程仓库，确保这里是 Gitee 的 SSH 地址
+          git remote add gitee git@gitee.com:shivermin/my-obsidian.git
 
       - name: Fetch from Gitee
         run: |
@@ -40,11 +42,13 @@ jobs:
         run: |
           git checkout main
           git pull gitee master --rebase
+          # 确保 git push 使用 actions/checkout 配置的 SSH 方式
+          # 'origin' 远程仓库已经由 actions/checkout@v4 配置好 SSH 身份验证
           git push origin main --force
 
       - name: Sync Other Branches (Optional)
         run: |
-          for branch in $(git branch -r | grep 'gitee/' | sed 's/gitee\///g' | grep -v 'HEAD' | grep -v 'master' | grep -v 'main'); do # 注意增加了对 'main' 的排除
+          for branch in $(git branch -r | grep 'gitee/' | sed 's/gitee\///g' | grep -v 'HEAD' | grep -v 'master' | grep -v 'main'); do
             git checkout -B $branch gitee/$branch
             git push origin $branch --force
           done
