@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "冒险岛操作/数据库操作.md",
+                "file": "冒险岛操作/Logs.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "数据库操作"
+              "title": "Logs"
             }
           }
         ]
@@ -166,19 +166,23 @@
       "daily-notes:打开/创建今天的日记": false,
       "templates:插入模板": false,
       "command-palette:打开命令面板": false,
-      "obsidian-git:Open Git source control": false
+      "obsidian-git:Open Git source control": false,
+      "obsidian-local-images-plus:Local Images Plus  0.16.3\r\nLocalize attachments (plugin folder)": false
     }
   },
   "active": "e631c4c6a01c203b",
   "lastOpenFiles": [
+    "冒险岛操作/修正后操作步骤.md",
+    "冒险岛操作/无法连接，修改配置.md",
+    "冒险岛操作/数据库操作.md",
+    "2496c415522d1437db0b818be0983966_MD5.png",
+    "2d71e28f05dfe40422c95fb0bda974bd_MD5.png",
+    "8e9b09f57d6e7416b183bd1d49ba20e4_MD5.jpg",
     "冒险岛操作/登录历程.md",
     "冒险岛操作/dbgate.md",
     "冒险岛操作/Python管理账号密码.md",
-    "冒险岛操作/修正后操作步骤.md",
     "客户端操作.md",
     "冒险岛操作/Logs.md",
-    "冒险岛操作/数据库操作.md",
-    "冒险岛操作/无法连接，修改配置.md",
     "冒险岛操作/操作.md",
     "资源监控.md",
     "华为云镜像加速器.md",
