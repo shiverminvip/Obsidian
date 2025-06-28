@@ -16,6 +16,11 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Set Git User Identity # 新增的步骤
+        run: |
+          git config user.email "actions@github.com" # 你可以替换成自己的邮箱
+          git config user.name "GitHub Actions Bot"   # 你可以替换成自己喜欢的名字
+
       - name: Add Gitee Remote
         run: |
           mkdir -p ~/.ssh
@@ -25,37 +30,25 @@ jobs:
           echo "  IdentityFile ~/.ssh/gitee_key" >> ~/.ssh/config
           echo "  StrictHostKeyChecking no" >> ~/.ssh/config
 
-          # 添加 Gitee 作为新的远程仓库
-          git remote add gitee git@gitee.com:shivermin/my-obsidian.git
-          # !!! 务必替换为你的实际 Gitee 仓库 SSH 地址 !!!
+          git remote add gitee git@gitee.com:shivermin/my-obsidian.git # 确保这里是你的实际 Gitee 仓库地址
 
       - name: Fetch from Gitee
         run: |
-          git fetch gitee --tags # 拉取 Gitee 的所有分支和标签
+          git fetch gitee --tags
 
       - name: Sync Gitee Master to GitHub Main
         run: |
-          # 1. 确保在正确的本地分支上工作（GitHub 的主分支是 main）
           git checkout main
-
-          # 2. 从 Gitee 的 master 分支拉取代码并与本地 main 分支合并（rebase 方式更整洁）
-          # 这会将 Gitee master 的所有提交应用到 GitHub main 分支的顶部
           git pull gitee master --rebase
-
-          # 3. 强制推送到 GitHub 的 main 分支
-          # --force 会覆盖 GitHub 上的 main 分支，确保 Gitee master 是权威源
           git push origin main --force
 
       - name: Sync Other Branches (Optional)
         run: |
-          # 遍历 Gitee 的所有分支并推送到 GitHub
-          # 如果你的Gitee有很多非master分支需要同步，可以保留此步骤
-          # 注意：这里会尝试将 Gitee 的所有分支（除了 master）以同名推送到 GitHub
-          for branch in $(git branch -r | grep 'gitee/' | sed 's/gitee\///g' | grep -v 'HEAD' | grep -v 'master'); do
+          for branch in $(git branch -r | grep 'gitee/' | sed 's/gitee\///g' | grep -v 'HEAD' | grep -v 'master' | grep -v 'main'); do # 注意增加了对 'main' 的排除
             git checkout -B $branch gitee/$branch
             git push origin $branch --force
           done
 
       - name: Sync Tags (Optional)
         run: |
-          git push origin --tags # 推送所有标签
+          git push origin --tags
