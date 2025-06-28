@@ -48,9 +48,23 @@
               "icon": "lucide-file",
               "title": "华为云镜像加速器"
             }
+          },
+          {
+            "id": "146f5d2ee8ba7f59",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Obsidian同步博客/原始教程.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "原始教程"
+            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -199,14 +213,27 @@
       "obsidian-local-images-plus:Local Images Plus  0.16.3\r\nLocalize attachments (plugin folder)": false
     }
   },
-  "active": "e31abfd150b79038",
+  "active": "146f5d2ee8ba7f59",
   "lastOpenFiles": [
+    "d6807f475dbc49d5f8c8ae3d128edeec_MD5.png",
+    "bf8d6b4968507a52d55056c7f227389c_MD5.png",
+    "1ac87841946ae2720eb2248ee8218ed8_MD5.png",
+    "3ecefb96e7f2a1aa64699803bca9493f_MD5.png",
+    "1ea625a27ec0114fa580f2b6173f4346_MD5.png",
+    "fe81d25e77dc0eb9be50fdc3fad305a6_MD5.png",
+    "3bac3ebd41b2111b35bcaa76fcc4dab4_MD5.png",
+    "c3d8417c57bdc122818d04e98725f08e_MD5.png",
+    "fbdc95d6a49de82e1f37a66d21a15cc4_MD5.png",
+    "531cf2fcb142806a6ed654d322c2bcd8_MD5.png",
+    "8c3c5a88065b859f871fca85f7d8d4be_MD5.png",
+    "华为云镜像加速器.md",
+    "Obsidian同步博客/原始教程.md",
+    "Obsidian同步博客",
     "公共镜像加速器.md",
     "gitea.md",
     "资源监控.md",
     "客户端操作.md",
     "markdown语法/字体大小.md",
-    "华为云镜像加速器.md",
     "冒险岛操作/Python管理账号密码.md",
     "markdown语法",
     "冒险岛操作/Logs.md",
@@ -216,9 +243,6 @@
     "冒险岛操作/修正后操作步骤.md",
     "冒险岛操作/dbgate.md",
     "冒险岛操作/无法连接，修改配置.md",
-    "2496c415522d1437db0b818be0983966_MD5.png",
-    "2d71e28f05dfe40422c95fb0bda974bd_MD5.png",
-    "8e9b09f57d6e7416b183bd1d49ba20e4_MD5.jpg",
     "未命名/稳定币市场.md",
     "未命名/未命名 1.canvas",
     "未命名/未命名.canvas",
