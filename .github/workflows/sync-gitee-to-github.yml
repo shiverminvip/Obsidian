@@ -1,58 +1,65 @@
-name: Sync Gitee to GitHub
+name: Sync Gitee to GitHub # 工作流名称，可自定义
 
 on:
-  push:
-    branches:
-      - master # 监听 Gitee 推送到 GitHub 仓库的 master 分支
-      - main   # 如果你的 GitHub 有其他推送，也监听
-  workflow_dispatch: # 允许手动触发工作流
+  # 这是核心触发器：监听来自 Netlify 函数的外部事件
+  repository_dispatch:
+    types: [gitee_push] # <--- 关键：必须与 Netlify 函数发送的 event_type 完全一致
+
+  # 以下是可选的触发器，如果不需要，可以删除以保持代码简洁
+  # 它们不会与 repository_dispatch 冲突
+  # workflow_dispatch: # 允许你从 GitHub Actions 界面手动触发此工作流
+  # schedule:          # 允许你设置定时触发，例如每小时同步一次
+  #   - cron: '0 * * * *' # UTC时间，每小时的第0分钟触发
 
 jobs:
   sync:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest # 在最新的 Ubuntu 虚拟机上运行
+
     steps:
-      - name: Checkout GitHub Repository
+      - name: Checkout GitHub Repository # 步骤1: 检出当前 GitHub 仓库
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
-          # token: ${{ secrets.GITHUB_TOKEN }} # 这一行通常是默认的，可以保留或省略，不会影响SSH推送
+          fetch-depth: 0 # 获取所有历史记录
+          token: ${{ secrets.GITHUB_TOKEN }} # 使用 GitHub 内置令牌进行身份验证
 
-      - name: Set Git User Identity
+      - name: Set Git User Identity # 步骤2: 设置 Git 用户身份，解决 committer unknown 问题
         run: |
           git config user.email "actions@github.com"
           git config user.name "GitHub Actions Bot"
 
-      - name: Add Gitee Remote
+      - name: Add Gitee Remote # 步骤3: 添加 Gitee 仓库作为远程源
         run: |
+          # 配置 SSH 密钥，使用 GitHub Secrets 中存储的 Gitee 私钥
           mkdir -p ~/.ssh
           echo "${{ secrets.GITEE_PRIVATE_KEY }}" > ~/.ssh/gitee_key
           chmod 600 ~/.ssh/gitee_key
           echo "Host gitee.com" >> ~/.ssh/config
           echo "  IdentityFile ~/.ssh/gitee_key" >> ~/.ssh/config
-          echo "  StrictHostKeyChecking no" >> ~/.ssh/config
+          echo "  StrictHostKeyChecking no" >> ~/.ssh/config # 首次连接跳过主机密钥检查
 
-          # 添加 Gitee 作为新的远程仓库，确保这里是 Gitee 的 SSH 地址
+          # 替换为你的实际 Gitee 仓库 SSH 地址 (例如 git@gitee.com:shivermin/my-obsidian.git)
           git remote add gitee git@gitee.com:shivermin/my-obsidian.git
 
-      - name: Fetch from Gitee
+      - name: Fetch from Gitee # 步骤4: 从 Gitee 拉取所有分支和标签
         run: |
           git fetch gitee --tags
 
-      - name: Sync Gitee Master to GitHub Main
+      - name: Sync Gitee Master to GitHub Main # 步骤5: 同步 Gitee 的 master 分支到 GitHub 的 main 分支
         run: |
-          git checkout main
+          git checkout main # 切换到 GitHub 的主分支
+          # 从 Gitee 的 master 分支拉取代码并与本地 main 分支合并（rebase 方式更整洁）
           git pull gitee master --rebase
-          # 确保 git push 使用 actions/checkout 配置的 SSH 方式
-          # 'origin' 远程仓库已经由 actions/checkout@v4 配置好 SSH 身份验证
+          # 强制推送到 GitHub 的 main 分支（因为 Gitee 是权威源，直接覆盖）
           git push origin main --force
 
-      - name: Sync Other Branches (Optional)
+      - name: Sync Other Branches (Optional) # 步骤6: 同步 Gitee 的其他分支到 GitHub（可选）
         run: |
+          # 遍历 Gitee 的所有非 master/main 分支并推送到 GitHub
           for branch in $(git branch -r | grep 'gitee/' | sed 's/gitee\///g' | grep -v 'HEAD' | grep -v 'master' | grep -v 'main'); do
-            git checkout -B $branch gitee/$branch
-            git push origin $branch --force
+            git checkout -B $branch gitee/$branch # 创建或切换本地同名分支
+            git push origin $branch --force # 强制推送到 GitHub
           done
 
-      - name: Sync Tags (Optional)
+      - name: Sync Tags (Optional) # 步骤7: 推送所有标签到 GitHub（可选）
         run: |
           git push origin --tags
