@@ -69,12 +69,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "test111 1.md",
+                "file": "test111 1 1.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "test111 1"
+              "title": "test111 1 1"
             }
           }
         ],
@@ -239,8 +239,9 @@
   },
   "active": "7506d51170a98c27",
   "lastOpenFiles": [
-    "test111.md",
     "test111 1.md",
+    "test111 1 1.md",
+    "test111.md",
     "test.md",
     "流程图.md",
     "未命名 5.md",
@@ -277,7 +278,6 @@
     "Obsidian同步博客",
     "冒险岛操作/Python管理账号密码.md",
     "markdown语法",
-    "冒险岛操作/Logs.md",
     "未命名/未命名 1.canvas",
     "未命名/未命名.canvas",
     "冒险岛操作",
