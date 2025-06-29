@@ -69,12 +69,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "test.md",
+                "file": "test111 1.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "test"
+              "title": "test111 1"
             }
           }
         ],
@@ -239,10 +239,11 @@
   },
   "active": "7506d51170a98c27",
   "lastOpenFiles": [
+    "gitea.md",
+    "test.md",
     "test111.md",
     "test111 1 1.md",
     "test111 1.md",
-    "test.md",
     "流程图.md",
     "未命名 5.md",
     "未命名 1.md",
@@ -253,7 +254,6 @@
     "未命名 7.md",
     "vercel自动触发sync.md",
     "Gitee代码自动同步到Github.md",
-    "gitea.md",
     "Git仓库关联--相关操作.md",
     "资源监控.md",
     "华为云镜像加速器.md",
