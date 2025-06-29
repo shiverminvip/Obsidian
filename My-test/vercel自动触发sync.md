@@ -168,3 +168,76 @@ module.exports = (req, res) => {
     - 点击进入项目 Dashboard，在项目概览页面，你会找到你的**部署 URL**。它通常是 `https://你的项目名.vercel.app/api/webhook`。
         
     - **复制这个 URL**，你需要在 Gitee WebHook 配置中使用它。
+
+太好了！你已经成功部署了 Vercel 函数，并且获得了域名。这是一个非常棒的进展！
+
+你看到的这三个域名分别是：
+
+1. **`gitee-webhook-dispatcher.vercel.app`**：这是你的**生产环境域名**。它是你部署的函数的主要、稳定的 URL。在 Gitee 配置 Webhook 时，你通常会使用这个域名。
+    
+2. **`gitee-webhook-dispatcher-git-main-shivermins-projects.vercel.app`**：这是你的 `main` 分支的**预览部署域名**。Vercel 会自动为每次推送到 Git 分支（除了生产分支）的代码部署一个独特的预览 URL。这对于在合并到 `main` 之前测试新功能非常方便。
+    
+3. **`gitee-webhook-dispatcher-8ysfb9olj-shivermins-projects.vercel.app`**：这是一个**独特的部署 ID 域名**。每次 Vercel 部署，它都会获得一个独特的 ID。这个 URL 指向你特定部署版本。
+    
+
+---
+
+### **Gitee Webhook 应该使用哪个域名？**
+
+对于你的 Gitee Webhook，你应该使用**生产环境域名**：
+
+**`https://gitee-webhook-dispatcher.vercel.app/api/webhook`**
+
+下面我们来详细说明原因，并明确接下来的步骤。
+
+---
+
+### **下一步：配置 Gitee Webhook**
+
+现在 Vercel 函数已经部署成功并通过 URL 访问，最后一步就是告诉 Gitee 将 Webhook 通知发送到哪里。
+
+1. **登录 Gitee。**
+    
+2. 进入你要同步的 **Gitee 仓库**页面。
+    
+3. 点击仓库页面右侧的 **“管理”** 按钮。
+    
+4. 在左侧导航栏中，找到 **“WebHooks”**。
+    
+5. 点击 **“添加WebHook”** 按钮。
+    
+6. **URL:** 粘贴你的 Vercel 函数的生产环境域名 URL，并在后面加上 `/api/webhook`： **`https://gitee-webhook-dispatcher.vercel.app/api/webhook`**
+    
+7. **密码 (Password/Secret):**
+    
+    - 如果你之前在 Vercel 中设置了 `GITEE_WEBHOOK_SECRET` 环境变量，请在这里输入**完全相同**的密钥字符串。
+        
+    - **强烈建议设置此密钥以提高安全性。**如果你在 Vercel 中没有设置，这里可以留空（但为了安全考虑，建议稍后添加！）。
+        
+8. **触发事件 (触发事件):**
+    
+    - **只勾选 “Push” (推送) 事件。**这确保只有当代码推送到 Gitee 时，Webhook 才会触发。
+        
+9. 点击 **“添加”**。
+    
+
+---
+
+### **最终测试和验证**
+
+配置好 Gitee Webhook 后，你整个自动化同步管道就准备就绪了！
+
+1. **在你的本地 Obsidian 库中做一些小的改动。** (例如，给某个笔记添加一行文字，或新建一个笔记)。
+    
+2. **提交更改：** `git commit -m "测试自动同步"`
+    
+3. **推送到 Gitee：** `git push`
+    
+4. **检查 Gitee WebHook 状态：** 返回你的 Gitee 仓库的 **WebHooks** 设置页面。你应该能看到你的 Webhook 最近的触发尝试，希望显示绿色的成功指示。
+    
+5. **检查 GitHub Actions：** 立即前往你的 **GitHub 仓库**，点击顶部的 **“Actions”** (操作) 选项卡。你应该会看到一个由 `repository_dispatch` 事件触发的新工作流运行（名称为 `gitee_push`）。
+    
+6. **验证 GitHub 仓库内容：** 一旦 GitHub Actions 工作流成功完成，刷新你的 GitHub 仓库页面。你在 Obsidian 中所做的更改并推送到 Gitee 的内容，现在应该也同步到你的 GitHub 仓库的 `main` 分支了。
+    
+
+就是这样！你的 Gitee 仓库现在会在你每次推送到 Gitee 时，自动同步到 GitHub。
