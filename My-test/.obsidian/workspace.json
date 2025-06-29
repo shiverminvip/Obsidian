@@ -62,9 +62,23 @@
               "icon": "lucide-file",
               "title": "Git仓库关联--相关操作"
             }
+          },
+          {
+            "id": "92f72c345a993c80",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "流程图.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "流程图"
+            }
           }
         ],
-        "currentTab": 3
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -223,12 +237,13 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "9af9eb67cdc87096",
+  "active": "92f72c345a993c80",
   "lastOpenFiles": [
+    "Git仓库关联--相关操作.md",
+    "流程图.md",
     "api/gpt-4o.md",
     "api/dall-e-3.md",
     "Gitee代码自动同步到Github.md",
-    "Git仓库关联--相关操作.md",
     "华为云镜像加速器.md",
     "资源监控.md",
     "Obsidian同步博客/原始教程.md",
