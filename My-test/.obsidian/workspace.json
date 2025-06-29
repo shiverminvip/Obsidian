@@ -8,77 +8,35 @@
         "type": "tabs",
         "children": [
           {
-            "id": "e631c4c6a01c203b",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "资源监控.md",
-                "mode": "source",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "资源监控"
-            }
-          },
-          {
-            "id": "d3884005030d5ce1",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "gitea.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "gitea"
-            }
-          },
-          {
-            "id": "e31abfd150b79038",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "华为云镜像加速器.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "华为云镜像加速器"
-            }
-          },
-          {
-            "id": "9af9eb67cdc87096",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Git仓库关联--相关操作.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Git仓库关联--相关操作"
-            }
-          },
-          {
             "id": "92f72c345a993c80",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "流程图.md",
+                "file": "Gitee代码自动同步到Github.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "流程图"
+              "title": "Gitee代码自动同步到Github"
+            }
+          },
+          {
+            "id": "357d3a8b6f2f6882",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "vercel自动触发sync.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "vercel自动触发sync"
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -237,15 +195,17 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "92f72c345a993c80",
+  "active": "357d3a8b6f2f6882",
   "lastOpenFiles": [
+    "Gitee代码自动同步到Github.md",
+    "vercel自动触发sync.md",
+    "gitea.md",
     "Git仓库关联--相关操作.md",
     "流程图.md",
+    "资源监控.md",
+    "华为云镜像加速器.md",
     "api/gpt-4o.md",
     "api/dall-e-3.md",
-    "Gitee代码自动同步到Github.md",
-    "华为云镜像加速器.md",
-    "资源监控.md",
     "Obsidian同步博客/原始教程.md",
     "Obsidian同步博客 1/原始教程.md",
     "Obsidian同步博客 1",
@@ -263,7 +223,6 @@
     "fe81d25e77dc0eb9be50fdc3fad305a6_MD5.png",
     "3bac3ebd41b2111b35bcaa76fcc4dab4_MD5.png",
     "Obsidian同步博客",
-    "gitea.md",
     "冒险岛操作/Python管理账号密码.md",
     "markdown语法",
     "冒险岛操作/Logs.md",
@@ -283,7 +242,6 @@
     "未命名/未命名思维导图.md",
     "未命名 2.canvas",
     "api",
-    "create a link.md",
-    "Welcome.md"
+    "create a link.md"
   ]
 }
