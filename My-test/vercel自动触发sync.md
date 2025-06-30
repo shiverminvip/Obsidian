@@ -286,3 +286,6 @@ bash
 复制编辑
 
 `echo "Test Sync Trigger" >> My-test/test.md git add . git commit -m "Test trigger" git push origin main`
+
+
+GG
