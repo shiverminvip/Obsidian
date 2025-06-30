@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - 'My-test/**'  # 只监听这个目录的变动
+  workflow_dispatch:  # 添加手动触发
 
 jobs:
   sync:
