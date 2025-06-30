@@ -241,3 +241,48 @@ module.exports = (req, res) => {
     
 
 就是这样！你的 Gitee 仓库现在会在你每次推送到 Gitee 时，自动同步到 GitHub。
+
+## 正确的做法：使用已发布的版本（最新为 `v0.5.4`）
+
+你应该将这段：
+
+yaml
+
+复制编辑
+
+`- name: Setup SSH   uses: webfactory/ssh-agent@v0.8.1`
+
+**改为：**
+
+yaml
+
+复制编辑
+
+`- name: Setup SSH   uses: webfactory/ssh-agent@v0.5.4`
+
+---
+
+## ✅ 修复后的完整 Workflow 示例
+
+yaml
+
+复制编辑
+
+`name: Sync My-test to mynote repo  on:   push:     branches:       - main     paths:       - 'My-test/**'   workflow_dispatch:  jobs:   sync:     runs-on: ubuntu-latest      steps:       - name: Checkout repo A         uses: actions/checkout@v3         with:           fetch-depth: 0        - name: Setup SSH         uses: webfactory/ssh-agent@v0.5.4         with:           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}        - name: Clone mynote repo         run: |           git clone git@github.com:yourusername/mynote.git           cd mynote           git checkout main        - name: Sync My-test to mynote/笔记/Obsidian         run: |           rsync -av --delete ./My-test/ ./mynote/笔记/Obsidian/        - name: Commit and push changes         run: |           cd mynote           git config user.name "github-actions[bot]"           git config user.email "github-actions[bot]@users.noreply.github.com"            if [ -n "$(git status --porcelain)" ]; then             git add 笔记/Obsidian/             git commit -m "Sync from Obsidian My-test at ${{ github.sha }}"             git push origin main           else             echo "No changes to commit"           fi`
+
+> ⚠️ 把 `yourusername` 改成你的 GitHub 用户名！
+
+---
+
+## 🔁 然后你可以这样验证：
+
+1. **手动 Run workflow**（Actions 页面）
+    
+2. 或者向 `My-test/` 目录提交任意内容：
+    
+
+bash
+
+复制编辑
+
+`echo "Test Sync Trigger" >> My-test/test.md git add . git commit -m "Test trigger" git push origin main`

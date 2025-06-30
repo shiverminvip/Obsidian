@@ -83,30 +83,16 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Github仓库同步.md",
+                "file": "vercel自动触发sync.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Github仓库同步"
-            }
-          },
-          {
-            "id": "58c3f4e0dbc40b88",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "NN.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "NN"
+              "title": "vercel自动触发sync"
             }
           }
         ],
-        "currentTab": 6
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -265,10 +251,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "58c3f4e0dbc40b88",
+  "active": "6ab0c338e4086d7e",
   "lastOpenFiles": [
-    "Github仓库同步.md",
     "NN.md",
+    "Github仓库同步.md",
     "福州机场施工日志.md",
     "Obsidian同步博客/原始教程.md",
     "流程图.md",
