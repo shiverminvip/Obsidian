@@ -4,9 +4,7 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'My-test/**'  # 只监听这个目录的变动
-  workflow_dispatch:  # 添加手动触发
+  workflow_dispatch:
 
 jobs:
   sync:
@@ -23,21 +21,21 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - name: Clone mynote repo
+      - name: Clone mynote repo (仓库 B)
         run: |
-          git clone git@github.com:shiverminvip/mynote.git
-          cd mynote
+          git clone git@github.com:shiverminvip/mynote.git repo-b
+          cd repo-b
           git checkout main
 
-      - name: Sync My-test to mynote/笔记/Obsidian
+      - name: Sync My-test/ to repo-b/笔记/Obsidian/
         run: |
-          rsync -av --delete ./My-test/ ./mynote/笔记/Obsidian/
+          rsync -av --delete ./My-test/ ./repo-b/笔记/Obsidian/
 
-      - name: Commit and push changes
+      - name: Commit & Push to repo B
         run: |
-          cd mynote
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+          cd repo-b
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
 
           if [ -n "$(git status --porcelain)" ]; then
             git add 笔记/Obsidian/
