@@ -83,16 +83,30 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "vercel自动触发sync.md",
+                "file": "Github仓库同步.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "vercel自动触发sync"
+              "title": "Github仓库同步"
+            }
+          },
+          {
+            "id": "4806c26b6b0bd159",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "wrong.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "wrong"
             }
           }
         ],
-        "currentTab": 5
+        "currentTab": 6
       }
     ],
     "direction": "vertical"
@@ -251,15 +265,17 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "6ab0c338e4086d7e",
+  "active": "4806c26b6b0bd159",
   "lastOpenFiles": [
-    "NN.md",
     "Github仓库同步.md",
-    "福州机场施工日志.md",
-    "Obsidian同步博客/原始教程.md",
-    "流程图.md",
+    "wrong.md",
     "Gitee代码自动同步到Github.md",
     "gitea.md",
+    "vercel自动触发sync.md",
+    "福州机场施工日志.md",
+    "NN.md",
+    "Obsidian同步博客/原始教程.md",
+    "流程图.md",
     "Git仓库关联--相关操作.md",
     "资源监控.md",
     "test111 1.md",
@@ -273,13 +289,11 @@
     "未命名 3.md",
     "未命名 2.md",
     "未命名 7.md",
-    "vercel自动触发sync.md",
     "华为云镜像加速器.md",
     "api/gpt-4o.md",
     "api/dall-e-3.md",
     "Obsidian同步博客 1/原始教程.md",
     "Obsidian同步博客 1",
-    "markdown语法/字体大小.md",
     "7530499e447c5fad43f34e77c1432c65_MD5.png",
     "a7d7248420ccd099a97e7e158ea15687_MD5.png",
     "0cead110d8759127264419a6b412d018_MD5.png",
