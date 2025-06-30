@@ -24,7 +24,7 @@ jobs:
 
       - name: Clone mynote repo
         run: |
-          git clone git@github.com:shivermin/mynote.git
+          git clone git@github.com:shiverminvip/mynote.git
           cd mynote
           git checkout main
 
