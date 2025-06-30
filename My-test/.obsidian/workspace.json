@@ -69,12 +69,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "施工日志.md",
+                "file": "流程图.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "施工日志"
+              "title": "流程图"
             }
           }
         ],
@@ -239,8 +239,8 @@
   },
   "active": "267b76ee77e4febc",
   "lastOpenFiles": [
-    "Gitee代码自动同步到Github.md",
     "施工日志.md",
+    "Gitee代码自动同步到Github.md",
     "gitea.md",
     "Git仓库关联--相关操作.md",
     "流程图.md",
