@@ -111,12 +111,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "客户端操作.md",
+                "file": "Zfile文件.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "客户端操作"
+              "title": "Zfile文件"
             }
           }
         ],
@@ -281,6 +281,7 @@
   },
   "active": "d1c7739d8f0bd1a4",
   "lastOpenFiles": [
+    "客户端操作.md",
     "冒险岛操作/数据库操作.md",
     "冒险岛操作/登录历程.md",
     "冒险岛操作/操作.md",
@@ -306,7 +307,6 @@
     "未命名 4.md",
     "未命名 3.md",
     "未命名 2.md",
-    "未命名 7.md",
     "Obsidian同步博客 1",
     "7530499e447c5fad43f34e77c1432c65_MD5.png",
     "a7d7248420ccd099a97e7e158ea15687_MD5.png",
