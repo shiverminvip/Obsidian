@@ -11,10 +11,14 @@
             "id": "bc10098199980b94",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "gitea.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "新标签页"
+              "title": "gitea"
             }
           }
         ]
@@ -178,13 +182,16 @@
   },
   "active": "bc10098199980b94",
   "lastOpenFiles": [
+    "资源监控.md",
+    "福州机场施工日志.md",
+    "Obsidian同步博客/原始教程.md",
+    "markdown语法/字体大小.md",
+    "冒险岛操作/Python管理账号密码.md",
     "Gitee代码自动同步到Github.md",
     "vercel自动触发sync.md",
-    "福州机场施工日志.md",
     "Github仓库同步.md",
     "冒险岛操作/dbgate.md",
     "客户端操作.md",
-    "冒险岛操作/Python管理账号密码.md",
     "冒险岛操作/数据库操作.md",
     "冒险岛操作/操作.md",
     "冒险岛操作/登录历程.md",
@@ -195,15 +202,12 @@
     "wrong.md",
     "gitea.md",
     "NN.md",
-    "Obsidian同步博客/原始教程.md",
     "流程图.md",
     "Git仓库关联--相关操作.md",
-    "资源监控.md",
     "test111 1.md",
     "test.md",
     "test111.md",
     "test111 1 1.md",
-    "未命名 5.md",
     "Obsidian同步博客 1",
     "7530499e447c5fad43f34e77c1432c65_MD5.png",
     "a7d7248420ccd099a97e7e158ea15687_MD5.png",
