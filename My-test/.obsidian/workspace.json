@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "未命名.md",
+                "file": "测量数据.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "未命名"
+              "title": "测量数据"
             }
           }
         ],
@@ -197,8 +197,20 @@
   },
   "active": "4405ca89fe920078",
   "lastOpenFiles": [
+    "公共镜像加速器.md",
+    "Zfile文件.md",
+    "测量数据.md",
+    "第二条天窗-会师.csv",
+    "垂片圆管.csv",
+    "S22马鞍.csv",
+    "s5.csv",
+    "s5 - 副本.csv",
+    "baju-8060.csv",
+    "20250814 - 马鞍.csv",
+    "20250811A.csv",
+    "20250811.csv",
+    "1.csv",
     "gitea.md",
-    "未命名.md",
     "资源监控.md",
     "福州机场施工日志.md",
     "Obsidian同步博客/原始教程.md",
@@ -215,15 +227,12 @@
     "冒险岛操作/增加注册web.md",
     "冒险岛操作/无法连接，修改配置.md",
     "冒险岛操作/修正后操作步骤.md",
-    "Zfile文件.md",
     "wrong.md",
     "NN.md",
     "流程图.md",
     "Git仓库关联--相关操作.md",
     "test111 1.md",
     "test.md",
-    "test111.md",
-    "Obsidian同步博客 1",
     "7530499e447c5fad43f34e77c1432c65_MD5.png",
     "a7d7248420ccd099a97e7e158ea15687_MD5.png",
     "0cead110d8759127264419a6b412d018_MD5.png",
@@ -234,14 +243,10 @@
     "1ea625a27ec0114fa580f2b6173f4346_MD5.png",
     "fe81d25e77dc0eb9be50fdc3fad305a6_MD5.png",
     "3bac3ebd41b2111b35bcaa76fcc4dab4_MD5.png",
-    "Obsidian同步博客",
-    "markdown语法",
     "未命名/未命名 1.canvas",
     "未命名/未命名.canvas",
-    "冒险岛操作",
     "未ba.canvas",
     "未命名 1.canvas",
-    "未命名 2.canvas",
-    "api"
+    "未命名 2.canvas"
   ]
 }
