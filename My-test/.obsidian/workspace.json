@@ -35,7 +35,8 @@
               "title": "流放大洋马狱火师"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -138,7 +139,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "流放之路2 浴火师-彗星之路 BD构筑指南0.1版本.md",
+                "file": "流放大洋马狱火师.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -148,7 +149,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "流放之路2 浴火师-彗星之路 BD构筑指南0.1版本 的反向链接列表"
+              "title": "流放大洋马狱火师 的反向链接列表"
             }
           },
           {
@@ -194,10 +195,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "a277b00925fb677b",
+  "active": "2912bb3fc00da180",
   "lastOpenFiles": [
-    "流放大洋马狱火师.md",
     "流放之路2 浴火师-彗星之路 BD构筑指南0.1版本.md",
+    "流放大洋马狱火师.md",
     "狱火师.md",
     "未命名.md",
     "锐眼.md",
