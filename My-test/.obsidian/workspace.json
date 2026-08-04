@@ -20,37 +20,8 @@
               "icon": "lucide-file",
               "title": "流放之路2 浴火师-彗星之路 BD构筑指南0.1版本"
             }
-          },
-          {
-            "id": "2912bb3fc00da180",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "流放大洋马狱火师.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "流放大洋马狱火师"
-            }
-          },
-          {
-            "id": "8c1083839778fcb4",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "石板.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "石板"
-            }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -155,7 +126,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "石板.md",
+                "file": "流放之路2 浴火师-彗星之路 BD构筑指南0.1版本.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -211,12 +182,16 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "8c1083839778fcb4",
+  "active": "a277b00925fb677b",
   "lastOpenFiles": [
-    "石板.md",
     "流放大洋马狱火师.md",
+    "石板.md",
     "流放之路2 浴火师-彗星之路 BD构筑指南0.1版本.md",
+    "资源监控.md",
     "狱火师.md",
+    "流程图.md",
+    "客户端操作.md",
+    "华为云镜像加速器.md",
     "未命名.md",
     "锐眼.md",
     "Git仓库关联--相关操作.md",
@@ -225,7 +200,6 @@
     "冰裂掌武圣装备.md",
     "测量数据.md",
     "武圣.md",
-    "华为云镜像加速器.md",
     "未命名.base",
     "未命名 1.base",
     "未命名 5.base",
@@ -238,17 +212,14 @@
     "Github仓库同步.md",
     "Gitee代码自动同步到Github.md",
     "gitea.md",
-    "客户端操作.md",
     "公共镜像加速器.md",
     "福州机场施工日志.md",
     "Obsidian同步博客/原始教程.md",
     "test.md",
-    "流程图.md",
     "第二条天窗-会师.csv",
     "垂片圆管.csv",
     "S22马鞍.csv",
     "s5.csv",
-    "资源监控.md",
     "7530499e447c5fad43f34e77c1432c65_MD5.png",
     "a7d7248420ccd099a97e7e158ea15687_MD5.png",
     "0cead110d8759127264419a6b412d018_MD5.png",
